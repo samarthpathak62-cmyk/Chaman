@@ -49,7 +49,7 @@ def train():
     print(f"Model parameters: {total_params / 1e9:.2f}B")
 
     tokenizer = get_tokenizer()
-    dataset = get_streaming_dataset(tokenizer, max_length=512, buffer_size=20000)
+    dataset = get_streaming_dataset(tokenizer, max_length=512, buffer_size=2000000)
 
     # Streaming dataset needs iterable dataloader
     dataloader = DataLoader(dataset, batch_size=1, num_workers=0)
