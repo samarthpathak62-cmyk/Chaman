@@ -63,7 +63,7 @@ def train():
     print(f"Model parameters: {total_params / 1e9:.2f}B")
 
     tokenizer = get_tokenizer()
-    dataset = get_streaming_dataset(tokenizer, max_length=256, buffer_size=5000)
+    dataset = get_streaming_dataset(tokenizer, max_length=256, buffer_size=500000)
 
     dataloader = DataLoader(dataset, batch_size=1, collate_fn=collate_fn, num_workers=0)
 
@@ -75,7 +75,7 @@ def train():
 
     model.train()
     steps = 0
-    max_steps = 20000
+    max_steps = 50000
     pbar = tqdm(total=max_steps, desc="Training")
 
     torch.cuda.empty_cache()
